@@ -15,7 +15,11 @@ resource "yandex_mdb_postgresql_cluster" "this" {
   host_master_name    = var.host_master_name
   deletion_protection = var.deletion_protection
   security_group_ids  = var.security_groups_ids_list
-
+  
+  lifecycle {
+  ignore_changes = all
+  }
+  
   config {
     version                   = var.pg_version
     postgresql_config         = var.postgresql_config
